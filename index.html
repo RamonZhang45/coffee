@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>星久克咖啡｜品牌首頁</title>
+  <style>
+    :root{
+      --bg:#f7f1ea;            /* 溫暖奶油底 */
+      --brown-900:#3f2b23;     /* 深可可 */
+      --brown-700:#6b4a3a;     /* 焦糖棕 */
+      --brown-500:#a0735a;     /* 摩卡棕 */
+      --brown-200:#e8d7cc;     /* 淺卡其 */
+      --accent:#c98f6b;        /* 焦糖點綴 */
+      --paper:#fffaf5;         /* 手作紙質感 */
+      --radius:18px;
+      --shadow:0 10px 24px rgba(107,74,58,.18), 0 2px 6px rgba(63,43,35,.12);
+      --glow:0 0 0 6px rgba(201,143,107,.08);
+    }
+
+    /* Reset-ish */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Noto Sans TC", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang TC", "Microsoft JhengHei", sans-serif;
+      color:var(--brown-900);
+      background:
+        radial-gradient(1200px 800px at 15% -10%, rgba(201,143,107,.18), transparent 60%),
+        radial-gradient(800px 600px at 90% 10%, rgba(160,115,90,.12), transparent 55%),
+        var(--bg);
+      line-height:1.7;
+      letter-spacing:.2px;
+    }
+
+    .container{
+      width:min(1100px, 92vw);
+      margin-inline:auto;
+      padding:28px 0 72px;
+    }
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter: blur(8px);
+      background:linear-gradient(to bottom, rgba(255,250,245,.85), rgba(255,250,245,.6));
+      border-bottom:1px solid rgba(160,115,90,.18);
+    }
+    .header-inner{
+      width:min(1100px, 92vw);
+      margin:auto; padding:16px 0;
+      display:flex; align-items:center; justify-content:space-between; gap:16px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:14px; text-decoration:none; color:inherit;
+    }
+    .logo{
+      width:44px; height:44px; border-radius:50%;
+      display:grid; place-items:center;
+      background: radial-gradient(circle at 30% 30%, #fffaf5, #f0e2d8 70%);
+      border:1px solid rgba(107,74,58,.18);
+      box-shadow: var(--glow), var(--shadow);
+      font-weight:900; color:var(--brown-700);
+    }
+    .title{
+      font-weight:800; font-size:20px; letter-spacing:.5px;
+    }
+
+    /* Hero */
+    .hero{
+      margin-top:28px;
+      background: var(--paper);
+      border:1px solid rgba(160,115,90,.18);
+      border-radius: calc(var(--radius) + 6px);
+      padding: clamp(20px, 5vw, 40px);
+      box-shadow: var(--shadow);
+    }
+    .hero h1{
+      margin:0 0 10px;
+      font-size: clamp(28px, 2.6vw + 14px, 44px);
+      line-height:1.2;
+    }
+    .hero p.lead{
+      margin:0; color:var(--brown-700); font-size: clamp(16px, 1vw + 12px, 18px);
+    }
+
+    /* Section base */
+    section{
+      margin-top:42px;
+      background: var(--paper);
+      border:1px solid rgba(160,115,90,.18);
+      border-radius: var(--radius);
+      padding: clamp(18px, 4.2vw, 32px);
+      box-shadow: var(--shadow);
+    }
+    section h2{
+      margin:0 0 12px; font-size: clamp(20px, 1.4vw + 14px, 28px);
+    }
+    .divider{
+      height:1px; background: linear-gradient(to right, rgba(107,74,58,.18), transparent 60%);
+      margin:12px 0 18px;
+    }
+
+    /* 品牌理念 */
+    .ideology p{ margin:0; text-align:justify; }
+
+    /* 主打商品 */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(14px, 2.4vw, 22px);
+    }
+    @media (max-width: 840px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+    figure.card{
+      margin:0; padding:14px;
+      border-radius: calc(var(--radius) - 4px);
+      background: #fffdf9;
+      border:1px dashed rgba(160,115,90,.28); /* 手作感 */
+      box-shadow: var(--glow);
+      display:flex; flex-direction:column; align-items:center; text-align:center; gap:10px;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    figure.card:hover{ transform: translateY(-2px); box-shadow: 0 0 0 8px rgba(201,143,107,.08), var(--shadow); }
+    figure.card img{
+      width:100%; max-width:300px; aspect-ratio: 1 / 1; object-fit:cover;
+      border-radius: 16px;
+      border:1px solid rgba(107,74,58,.18);
+      box-shadow: 0 6px 18px rgba(107,74,58,.18);
+      display:block; margin-inline:auto;
+    }
+    figcaption{ font-weight:700; }
+    .desc{ color:var(--brown-700); font-size: 15px; }
+
+    /* 聯絡表單 */
+    form{
+      display:grid; gap:14px;
+    }
+    .field{
+      display:grid; gap:6px;
+    }
+    label{ font-weight:700; }
+    input, textarea{
+      width:100%;
+      border:1px solid rgba(107,74,58,.28);
+      border-radius: 14px;
+      padding:12px 14px;
+      font: inherit;
+      background: #fffdf9;
+      outline:none;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.5), var(--glow);
+      transition: box-shadow .2s ease, border-color .2s ease;
+    }
+    input:focus, textarea:focus{
+      border-color: var(--accent);
+      box-shadow: 0 0 0 6px rgba(201,143,107,.12), inset 0 1px 0 rgba(255,255,255,.5);
+    }
+    textarea{ min-height:136px; resize:vertical; }
+
+    .actions{
+      display:flex; gap:10px; align-items:center; justify-content:flex-end; margin-top:6px;
+    }
+    button{
+      border:0; cursor:pointer;
+      padding:12px 18px; border-radius: 999px;
+      background: linear-gradient(180deg, var(--accent), var(--brown-500));
+      color:#fff; font-weight:800; letter-spacing:.6px;
+      box-shadow: 0 10px 20px rgba(201,143,107,.28), 0 1px 0 rgba(255,255,255,.3) inset;
+      transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+    }
+    button:hover{ transform: translateY(-1px); filter: brightness(1.02); }
+    button:active{ transform: translateY(0); box-shadow: 0 4px 10px rgba(201,143,107,.24); }
+
+    /* 小徽章 */
+    .badge{
+      display:inline-block; padding:6px 10px; border-radius: 999px;
+      background: #fff; border:1px solid rgba(160,115,90,.22);
+      color: var(--brown-700); font-weight:700; font-size:12px;
+      box-shadow: var(--glow);
+    }
+
+    footer{
+      text-align:center; color:var(--brown-700);
+      margin:28px 0 8px; font-size:14px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header 頁首區 -->
+  <header aria-label="星久克咖啡 頁首">
+    <div class="header-inner">
+      <a class="brand" href="#" aria-label="返回首頁">
+        <img src="logo.jpg" alt="logo圖片" width="300" height="300" loading="lazy">
+        <div class="logo" aria-hidden="true">☕</div>
+        <div class="title">星久克咖啡</div>
+      </a>
+      <span class="badge">溫暖棕色・手作感・柔光</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero / 品牌標題 -->
+    <section class="hero" aria-labelledby="hero-title">
+      <h1 id="hero-title">星久克咖啡</h1>
+      <p class="lead">尋味世界，享受片刻。以匠心烘焙，釀一杯能 reset 壞情緒的日常療癒。</p>
+    </section>
+
+    <!-- 品牌理念區 -->
+    <section class="ideology" aria-labelledby="idea-title">
+      <h2 id="idea-title">品牌理念</h2>
+      <div class="divider" role="separator" aria-hidden="true"></div>
+      <p>
+        「尋味世界，享受片刻」。我們相信每一杯咖啡都承載著獨特的故事與風味，如同我們 LOGO 中的雙尾美人魚，引領您探索海洋深處的神秘寶藏。星久克嚴選全球優質咖啡豆，以匠心烘焙，呈現咖啡最純粹的香醇。我們致力於打造一個舒適、放鬆的空間，讓您在繁忙生活中，也能找到屬於自己的靜謐片刻，細細品味咖啡帶來的愉悅與啟發。在星久克，不只是一杯咖啡，更是一種生活態度，一次感官之旅。
+      </p>
+    </section>
+
+    <!-- 主打商品區 -->
+    <section class="products" aria-labelledby="prod-title">
+      <h2 id="prod-title">主打商品</h2>
+      <div class="divider" role="separator" aria-hidden="true"></div>
+
+      <div class="grid" role="list">
+        <!-- 卡片 1 -->
+        <figure class="card" role="listitem">
+          <img src="Espresso.jpg" alt="經典義式濃縮 Espresso 商品圖片" width="300" height="300" loading="lazy">
+          <figcaption>經典義式濃縮 (Espresso)</figcaption>
+          <p class="desc">一杯濃郁的義式濃縮，展現咖啡最原始的風味。</p>
+        </figure>
+
+        <!-- 卡片 2 -->
+        <figure class="card" role="listitem">
+          <img src="Caramel Macchiato.jpg" alt="焦糖瑪奇朵 Caramel Macchiato 商品圖片" width="300" height="300" loading="lazy">
+          <figcaption>焦糖瑪奇朵 (Caramel Macchiato)</figcaption>
+          <p class="desc">融合了香醇咖啡、溫潤牛奶和甜蜜焦糖，是許多人的最愛。</p>
+        </figure>
+
+        <!-- 卡片 3 -->
+        <figure class="card" role="listitem">
+          <img src="Iced Coffee.jpg" alt="星久克特調冰咖啡 Xingjuke Special Iced Coffee 商品圖片" width="300" height="300" loading="lazy">
+          <figcaption>星久克特調冰咖啡 (Xingjuke Special Iced Coffee)</figcaption>
+          <p class="desc">一杯清涼提神的特調冰咖啡，非常適合炎熱的天氣。</p>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 聯絡表單區 -->
+    <section class="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">聯絡我們</h2>
+      <div class="divider" role="separator" aria-hidden="true"></div>
+
+      <form id="contactForm" novalidate>
+        <div class="field">
+          <label for="name">姓名</label>
+          <input id="name" name="name" type="text" required value="張訓倉" autocomplete="name" />
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required value="xunchangzhang56541@hotmail.com.tw" autocomplete="email" />
+        </div>
+
+        <div class="field">
+          <label for="message">留言內容</label>
+          <textarea id="message" name="message" required>這杯今天真的特別順🥹
+感覺喝一口就能 reset 一天的壞情緒
+請問這支豆是哪一款？想宅配！</textarea>
+        </div>
+
+        <div class="actions">
+          <button type="submit" aria-label="送出留言">送出留言</button>
+        </div>
+      </form>
+    </section>
+
+    <footer>
+      © <span id="year"></span> 星久克咖啡 · 一杯，享受片刻
+    </footer>
+  </main>
+
+  <script>
+    // 年份自動更新
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // 表單提交：防止實際送出，彈出感謝訊息
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+
+      // 可選：前端簡易驗證（確保三欄都有值）
+      var name = document.getElementById('name').value.trim();
+      var email = document.getElementById('email').value.trim();
+      var msg = document.getElementById('message').value.trim();
+
+      if(!name || !email || !msg){
+        alert('請完整填寫姓名、Email 與留言內容，謝謝！');
+        return;
+      }
+
+      // 需求指定的 alert 訊息
+      alert('感謝您的留言，我們將盡快與您聯絡。');
+
+      // 如果不想清空預設值就不要 reset。這裡保持原樣以符合「預設值」需求。
+      // 若未來要清空，可解除下一行註解：
+      // this.reset();
+    });
+  </script>
+</body>
+</html>
